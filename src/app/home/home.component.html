@@ -1,7 +1,12 @@
-<p>
-  home works!
-</p>
+<app-menu></app-menu>
+<div class="container">
+  <div class="content">
+    <ul *ngFor="let user of users">
+      <li>
+        <p><span>{{user.id}}</span>
+          {{user.name}}</p>
+      </li>
+    </ul>
+  </div>
+</div><!--end container-->
 
-<ul *ngFor="let user of users">
-  <li>{{user.name}}</li>
-</ul>

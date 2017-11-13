@@ -14,6 +14,8 @@ import { HomeComponent } from './home/home.component';
 
 import { UserService } from './shared/user.service';
 import { MessageService } from './shared/message.service';
+import { ManageComponent } from './manage/manage.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   imports: [
@@ -31,7 +33,9 @@ import { MessageService } from './shared/message.service';
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    ManageComponent,
+    MenuComponent
   ],
   providers: [
     UserService,
