@@ -1,12 +1,11 @@
 <app-menu></app-menu>
 <div class="container">
   <div class="content home-content">
-    <ul *ngFor="let user of users">
+    <ul *ngFor="let item of items">
       <li>
         <p> 
-          <button class="btn btn-danger">remove</button>
-          <span>{{user.id}}</span>
-          {{user.name}}
+          <button class="btn btn-danger" (click)="delete(item)">remove</button>
+          {{item.name}}
         </p>
       </li>
     </ul>

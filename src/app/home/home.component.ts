@@ -11,7 +11,7 @@ import { ItemService } from '../shared/item.service';
 
 export class HomeComponent implements OnInit {
 
-  users: Item[];
+  items: Item[];
 
   constructor(private itemService: ItemService) { }
 
@@ -21,7 +21,13 @@ export class HomeComponent implements OnInit {
   
   getItems(): void{
     this.itemService.getItems()
-      .subscribe(users => this.users = users);
+      .subscribe(users => this.items = users);
+  }
+
+  delete(item: Item): void{
+    console.log(item);
+    this.items = this.items.filter(h =>h !== item);
+    this.itemService.deleteItem(item).subscribe();
   }
 
 }

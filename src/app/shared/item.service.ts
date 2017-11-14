@@ -28,10 +28,19 @@ export class ItemService {
   }
 
   addItem(item: Item): Observable<Item> {
-        return this.http.post<Item>(this.itemsURL, item, httpOptions).pipe(
-          tap((item: Item) => this.log(`added item w/ id=${item.id}`)),
-          catchError(this.handleError<Item>('addItem'))
-        );
+    return this.http.post<Item>(this.itemsURL, item, httpOptions).pipe(
+      tap((item: Item) => this.log(`added item w/ id=${item.id}`)),
+      catchError(this.handleError<Item>('addItem'))
+    );
+  }
+
+  deleteItem(item: Item | number): Observable<Item> {
+    const id = typeof item === 'number' ? item : item.id;
+    const url = `${this.itemsURL}/${id}`;
+    return this.http.delete<Item>(url, httpOptions).pipe(
+      tap(_ => this.log(`deleted hero id=${id}`)),
+      catchError(this.handleError<Item>('deleteItem'))
+    );
   }
 
   /**
