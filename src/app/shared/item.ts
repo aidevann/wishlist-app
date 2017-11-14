@@ -1,4 +1,4 @@
-export class User {
+export class Item {
     id: number;
     name: string;
 }

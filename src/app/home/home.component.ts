@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { User } from '../shared/user';
-import { UserService } from '../shared/user.service'; 
+import { Item } from '../shared/item';
+import { ItemService } from '../shared/item.service'; 
 
 @Component({
   selector: 'app-home',
@@ -11,19 +11,17 @@ import { UserService } from '../shared/user.service';
 
 export class HomeComponent implements OnInit {
 
-  users: User[];
+  users: Item[];
 
-  constructor(private userService: UserService) { }
+  constructor(private itemService: ItemService) { }
 
   ngOnInit() {
-    this.getUsers();
+    this.getItems();
   }
   
-  getUsers(): void{
-    this.userService.getUsers()
+  getItems(): void{
+    this.itemService.getItems()
       .subscribe(users => this.users = users);
   }
-
-
 
 }

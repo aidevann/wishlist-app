@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import { User } from './user';
+import { Item } from './item';
 import { MessageService } from './message.service';
 
 const httpOptions = {
@@ -13,21 +13,26 @@ const httpOptions = {
 }
 
 @Injectable()
-export class UserService {
- 
-  private usersURL = 'api/users';
+export class ItemService {
 
-  constructor(
-    private http: HttpClient,
-    private messageService: MessageService) { }
+  private itemsURL = 'api/items';
 
-    getUsers(): Observable<User[]>{
-      return this.http.get<User[]>(this.usersURL)
-        .pipe(
-          tap(users => this.log('fetched heroes')),
-          catchError(this.handleError('getHeroes',[]))
+  constructor(private http: HttpClient, private messageService: MessageService) { }
+
+  getItems(): Observable<Item[]> {
+    return this.http.get<Item[]>(this.itemsURL)
+      .pipe(
+      tap(users => this.log('fetched items')),
+      catchError(this.handleError('getItems', []))
+      );
+  }
+
+  addItem(item: Item): Observable<Item> {
+        return this.http.post<Item>(this.itemsURL, item, httpOptions).pipe(
+          tap((item: Item) => this.log(`added item w/ id=${item.id}`)),
+          catchError(this.handleError<Item>('addItem'))
         );
-    }
+  }
 
   /**
    * Handle Http operation that failed.
@@ -35,7 +40,7 @@ export class UserService {
    * @param operation - name of the operation that failed
    * @param result - optional value to return as the observable result
    */
-  private handleError<T> (operation = 'operation', result?: T) {
+  private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
       // TODO: send the error to remote logging infrastructure
@@ -51,6 +56,6 @@ export class UserService {
 
   /** Log a HeroService message with the MessageService */
   private log(message: string) {
-    this.messageService.add('HeroService: ' + message);
+    this.messageService.add('ItemService: ' + message);
   }
 }

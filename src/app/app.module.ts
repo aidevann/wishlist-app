@@ -12,7 +12,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 
-import { UserService } from './shared/user.service';
+import { ItemService } from './shared/item.service';
 import { MessageService } from './shared/message.service';
 import { ManageComponent } from './manage/manage.component';
 import { MenuComponent } from './menu/menu.component';
@@ -38,7 +38,7 @@ import { MenuComponent } from './menu/menu.component';
     MenuComponent
   ],
   providers: [
-    UserService,
+    ItemService,
     MessageService
   ],
   bootstrap: [AppComponent]

@@ -1,12 +1,16 @@
 <app-menu></app-menu>
 <div class="container">
-  <div class="content">
+  <div class="content home-content">
     <ul *ngFor="let user of users">
       <li>
-        <p><span>{{user.id}}</span>
-          {{user.name}}</p>
+        <p> 
+          <button class="btn btn-danger">remove</button>
+          <span>{{user.id}}</span>
+          {{user.name}}
+        </p>
       </li>
     </ul>
   </div>
 </div><!--end container-->
 
+`
