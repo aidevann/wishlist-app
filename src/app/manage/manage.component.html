@@ -1,8 +1,20 @@
 <app-menu></app-menu>
 <div class="container">
     <div class="content">
-     Add wishlist <input #itemName type="text" class="col-sm-3 form-control" /><br/>
-     <button class="btn btn-success" (click)="add(itemName.value);itemName.value=''">Add</button>
+        Add wishlist
+        <input #itemName type="text" class="col-sm-3 form-control" />
+        <br/>
+        <button class="btn btn-success" (click)="add(itemName.value);itemName.value=''">Add</button>
     </div>
-</div>
-
+    <div class="content home-content">
+        <loading-spinner *ngIf="showSpinner"></loading-spinner>
+        <ul *ngFor="let item of items">
+            <li>
+                <p>
+                    <button class="btn btn-danger" (click)="delete(item)">remove</button>
+                    {{item.name}}
+                </p>
+            </li>
+        </ul>
+    </div>
+</div><!--end container-->
