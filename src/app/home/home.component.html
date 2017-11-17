@@ -1,15 +1,18 @@
 <app-menu></app-menu>
 <div class="container">
   <div class="content home-content">
-    <ul *ngFor="let item of items">
-      <li>
-        <p> 
-          <button class="btn btn-danger" (click)="delete(item)">remove</button>
-          {{item.name}}
-        </p>
-      </li>
-    </ul>
+    <loading-spinner *ngIf="showSpinner"></loading-spinner>
+      <ul *ngFor="let item of items">
+        <li>
+          <p>
+            <button class="btn btn-danger" (click)="delete(item)">remove</button>
+            {{item.name}}
+          </p>
+        </li>
+      </ul>
+
   </div>
-</div><!--end container-->
+</div>
+<!--end container-->
 
 `

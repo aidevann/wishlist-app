@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Item } from '../shared/item';
-import { ItemService } from '../shared/item.service'; 
+import { ItemService } from '../shared/item.service';
 
 @Component({
   selector: 'app-home',
@@ -12,21 +12,25 @@ import { ItemService } from '../shared/item.service';
 export class HomeComponent implements OnInit {
 
   items: Item[];
+  
+  showSpinner = true;
 
   constructor(private itemService: ItemService) { }
 
   ngOnInit() {
     this.getItems();
   }
-  
-  getItems(): void{
-    this.itemService.getItems()
-      .subscribe(users => this.items = users);
+
+  getItems(): void {
+    this.itemService.getItems().subscribe( users =>{
+        this.items = users;
+        this.showSpinner = false;
+    });
   }
 
-  delete(item: Item): void{
+  delete(item: Item): void {
     console.log(item);
-    this.items = this.items.filter(h =>h !== item);
+    this.items = this.items.filter(h => h !== item);
     this.itemService.deleteItem(item).subscribe();
   }
 

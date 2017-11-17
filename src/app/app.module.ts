@@ -16,6 +16,7 @@ import { ItemService } from './shared/item.service';
 import { MessageService } from './shared/message.service';
 import { ManageComponent } from './manage/manage.component';
 import { MenuComponent } from './menu/menu.component';
+import { LoadingSpinnerComponent } from './ui/loading-spinner/loading-spinner.component';
 
 @NgModule({
   imports: [
@@ -35,7 +36,8 @@ import { MenuComponent } from './menu/menu.component';
     LoginComponent,
     HomeComponent,
     ManageComponent,
-    MenuComponent
+    MenuComponent,
+    LoadingSpinnerComponent
   ],
   providers: [
     ItemService,
