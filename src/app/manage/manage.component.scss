@@ -11,8 +11,25 @@
             background:  rgb(239,232,232);
             margin: 10px;
             padding: 8px;
-            width: 100px;
-            height: 85px;
+        }
+        li.item-box{
+             .fa-trash{
+                 margin: 5px;
+                 &:hover{
+                     cursor: pointer;
+                 }
+             }
+             .fa-pencil{
+                 margin: 5px;
+                 &:hover{
+                     cursor: pointer;
+                 }
+             }
+             .fa-floppy-o{
+                 &:hover{
+                     cursor: pointer;
+                 }
+             }
         }
     }
 }
