@@ -1,0 +1,28 @@
+<app-menu></app-menu>
+<div class="container">
+    <div class="content">
+        Add wishlist
+        <input (keyup.enter)="add(itemName.value);itemName.value=''" #itemName type="text" class="col-sm-3 form-control" />
+        <br/>
+        <button class="btn btn-success" (click)="add(itemName.value);itemName.value=''">Add</button>
+    </div>
+    <div class="content items-wrapper">
+        <loading-spinner *ngIf="showSpinner"></loading-spinner>
+        <ul class="d-flex flex-wrap">
+            <li *ngFor="let item of items" class="item-box col-2">
+                <i class="fa fa-trash" aria-hidden="true" (click)="delete(item)"></i>
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+                {{item.name}}
+                <div class="d-flex align-items-end flex-column">
+                    <div class="mt-auto p-2">
+                        <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+
+
+    </div>
+</div>
+<!--end container-->
